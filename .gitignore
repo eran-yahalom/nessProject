@@ -1,39 +1,36 @@
+### --- Automation & Maven Specific --- ###
 target/
+*.jar
 !.mvn/wrapper/maven-wrapper.jar
-!**/src/main/**/target/
-!**/src/test/**/target/
-.kotlin
+# Allure folders
+allure-results/
+allure-report/
+.allure/
+# Logs and temp files
+*.log
+test-output/
+Chinook.db-journal
 
-### IntelliJ IDEA ###
-.idea/modules.xml
-.idea/jarRepositories.xml
-.idea/compiler.xml
-.idea/libraries/
+### --- IntelliJ IDEA --- ###
+.idea/
 *.iws
 *.iml
 *.ipr
+out/
 
-### Eclipse ###
+### --- Eclipse & Other IDEs --- ###
 .apt_generated
 .classpath
 .factorypath
 .project
 .settings
-.springBeans
-.sts4-cache
-
-### NetBeans ###
-/nbproject/private/
-/nbbuild/
-/dist/
-/nbdist/
-/.nb-gradle/
-build/
-!**/src/main/**/build/
-!**/src/test/**/build/
-
-### VS Code ###
 .vscode/
+bin/
 
-### Mac OS ###
+### --- System Files --- ###
 .DS_Store
+Thumbs.db
+
+### --- Keeping Configuration --- ###
+!.gitignore
+!pom.xml
