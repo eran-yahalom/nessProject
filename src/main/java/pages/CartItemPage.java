@@ -1,7 +1,7 @@
 package pages;
 
 import com.google.inject.Inject;
-import components.BreadcrumbComponent;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -9,7 +9,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import utils.Utils;
 
 public class CartItemPage extends BasePage {
-    private BreadcrumbComponent breadcrumbs;
+
 
     @FindBy(css = ".add-to-cart-panel [value='Add to cart']")
     private WebElement addToCartButton;
@@ -50,7 +50,7 @@ public class CartItemPage extends BasePage {
     @Inject
     public CartItemPage(WebDriver driver) {
         super(driver);
-        breadcrumbs = new BreadcrumbComponent(driver);
+
     }
 
     public boolean clickAddToCartButton() {
@@ -100,8 +100,8 @@ public class CartItemPage extends BasePage {
         return click(addToCompareListButton);
     }
 
-    public boolean doesBreadcrumbContainProductName(String expectedBreadcrumb) {
-        String lastBreadCrumbText = breadcrumbs.getLastBreadcrumbStep();
-        return expectedBreadcrumb.equalsIgnoreCase(lastBreadCrumbText);
-    }
+//    public boolean doesBreadcrumbContainProductName(String expectedBreadcrumb) {
+//        String lastBreadCrumbText = breadcrumbs.getLastBreadcrumbStep();
+//        return expectedBreadcrumb.equalsIgnoreCase(lastBreadCrumbText);
+//    }
 }

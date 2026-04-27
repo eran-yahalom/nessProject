@@ -2,7 +2,6 @@ package step_definitions;
 
 import com.google.inject.Inject;
 import com.google.inject.Provider;
-import components.BreadcrumbComponent;
 import components.CategoryItemsComponent;
 import components.HeaderComponent;
 import configurations.EnvManager;
@@ -32,7 +31,12 @@ public class GeneralStepDefinition {
 
 
     @Inject
-    public GeneralStepDefinition(Provider<WelcomePage> welcomePageProvider, Provider<HeaderComponent> headerComponentProvider, Provider<CartItemPage> cartItemPageProvider, Provider<BreadcrumbComponent> breadcrumbComponentProvider, Provider<CategoryItemsComponent> cartItemPageProvider1, Provider<ItemDetailsPage> itemDetailsPageProvider, Provider<ShoppingCartPage> shoppingCartPageProvider) {
+    public GeneralStepDefinition(Provider<WelcomePage> welcomePageProvider,
+                                 Provider<HeaderComponent> headerComponentProvider,
+                                 Provider<CategoryItemsComponent> cartItemPageProvider1,
+                                 Provider<ItemDetailsPage> itemDetailsPageProvider,
+                                 Provider<ShoppingCartPage> shoppingCartPageProvider)
+    {
         this.welcomePageProvider = welcomePageProvider;
         this.headerComponentProvider = headerComponentProvider;
         this.cartItemPageProvider = cartItemPageProvider1;
@@ -98,8 +102,5 @@ public class GeneralStepDefinition {
 
         Assert.assertEquals(numberOfItemsAfterAdd, linksSize, "Number of items in cart does not match the number of added items");
         Assert.assertTrue(cartTotalValid, "Cart total exceeds the maximum price limit");
-
-
-//        Assert.assertTrue(shoppingCartPageProvider.get().assertCartTotalNotExceeds(maxPrice, limit));
     }
 }
