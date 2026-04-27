@@ -25,10 +25,10 @@ import java.util.List;
 public class GeneralStepDefinition {
 
     private final Provider<WelcomePage> welcomePageProvider;
-    private final Provider<HeaderComponent> headerComponentProvider;
-    private final Provider<CategoryItemsComponent> cartItemPageProvider;
     private final Provider<ItemDetailsPage> itemDetailsPageProvider;
     private final Provider<ShoppingCartPage> shoppingCartPageProvider;
+    private final Provider<HeaderComponent> headerComponentProvider;
+    private final Provider<CategoryItemsComponent> cartItemPageProvider;
 
 
     @Inject
