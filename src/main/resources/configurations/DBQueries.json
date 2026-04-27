@@ -1,0 +1,14 @@
+{
+  "get_album_title": "SELECT a.Title From Album a WHERE a.AlbumId =?",
+  "get_customer_data": "Select c.* FROM Customer c WHERE c.CustomerId =?",
+  "set_new_customer": "INSERT INTO ap_user (first_name, last_name, email, phone, address, city, country) VALUES (?,?,?,?,?,?,?);",
+  "set_new_customer_auth": "insert into CustomerAuth (password_hash,active,suspended,failed_login_attempts,app_user_id) values (?,?,?,?,?);",
+  "get_customer_id_by_email": "SELECT au.id FROM ap_user au WHERE au.email =?",
+  "get_random_customer_user_and_password_old": "SELECT au.email, ca.password_hash FROM ap_user au JOIN CustomerAuth ca ON au.id = ca.app_user_id WHERE ca.active =1 and ca.suspended =0 ORDER BY RANDOM() LIMIT 1;",
+  "get_nimber_of_cart_items_qty": "SELECT sum(ci.quantity) FROM ap_user au JOIN Cart c on au.id =c.user_id  join CartItems ci ON c.cart_id =ci.cart_id where au.email  like ?",
+  "get_cart_item_qty_and_total_price": "SELECT p.name ,sum(ci.quantity) as itemsQty ,p.price,sum(ci.quantity *p.price) as totalPrice FROM ap_user au JOIN Cart c on au.id =c.user_id join CartItems ci ON c.cart_id =ci.cart_id JOIN Products p ON ci.product_id =p.product_id where au.email like ?;",
+  "get_user_data_by_user_name": "SELECT pssu.* FROM Pet_store_swagger_users pssu where RANDOM() and pssu.user_status =1 LIMIT 1;",
+  "get_user_name_tht_dont_exist": "SELECT pssu.user_bame FROM Pet_store_swagger_users pssu where pssu.user_status =0;",
+  "get_random_customer_user_and_password": "select u.email,u.password FROM Users u where u.is_active =? ORDER BY RANDOM() limit 1;",
+  "insert_into_users_table": "insert into Users (email,password,first_name ,last_name,is_active) values(?,?,?,?,?);"
+}

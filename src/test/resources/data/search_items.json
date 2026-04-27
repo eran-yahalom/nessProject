@@ -1,0 +1,22 @@
+[
+  {
+    "query": "computer",
+    "maxPrice": 100.0,
+    "limit": 4
+  },
+  {
+    "query": "tcp",
+    "maxPrice": 1000.0,
+    "limit": 2
+  },
+  {
+    "query": "Health",
+    "maxPrice": 30.0,
+    "limit": 5
+  },
+  {
+    "query": "Jewelry",
+    "maxPrice": 500.0,
+    "limit": 1
+  }
+]

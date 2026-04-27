@@ -1,0 +1,20 @@
+{
+  "environments": {
+    "qa1": {
+      "url": "https://demowebshop.tricentis.com/?hl=en-GB",
+      "schema":  "jdbc:sqlite:/Users/eranyahalom/Library/DBeaverData/workspace6/.metadata/sample-database-sqlite-1/Chinook.db",
+      "dbName": "qa1_db",
+      "dbPass": "pass123",
+      "username": "yaha@yopmail.com",
+      "password": "Aa123456!"
+    },
+    "qa2": {
+      "url": "https://qa2.demostore.com",
+      "schema": "staging",
+      "dbName": "qa2_db",
+      "dbPass": "pass456",
+      "username": "admin_qa2",
+      "password": "password_qa2"
+    }
+  }
+}
