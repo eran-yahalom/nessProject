@@ -3,17 +3,14 @@ package configurations.db;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
-import java.io.File;
 
 public class DBServiceProvider {
 
     public static Connection createSqliteConnection(String schemaURL, String dbName, String username, String password) {
         String finalUrl = schemaURL;
 
-        // אם ה-URL מכיל את הנתיב הישן של המק, נחליף אותו בנתיב יחסי לפרויקט
         if (schemaURL.contains("/Users/eranyahalom/")) {
             String projectPath = System.getProperty("user.dir");
-            // אנחנו מניחים שהקובץ נמצא בתוך src/test/resources/db/
             String relativePath = "/src/test/resources/db/Chinook.db";
             finalUrl = "jdbc:sqlite:" + projectPath + relativePath;
 

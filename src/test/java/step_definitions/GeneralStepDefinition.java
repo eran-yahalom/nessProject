@@ -11,8 +11,8 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import models.testdata.SearchTestData;
 import org.testng.Assert;
-import pages.CartItemPage;
 import pages.ItemDetailsPage;
+import pages.SearchPage;
 import pages.ShoppingCartPage;
 import pages.WelcomePage;
 import utils.JsonDataLoaderUtils;
@@ -28,6 +28,7 @@ public class GeneralStepDefinition {
     private final Provider<ShoppingCartPage> shoppingCartPageProvider;
     private final Provider<HeaderComponent> headerComponentProvider;
     private final Provider<CategoryItemsComponent> cartItemPageProvider;
+    private final Provider<SearchPage> searchPageProvider;
 
 
     @Inject
@@ -35,13 +36,13 @@ public class GeneralStepDefinition {
                                  Provider<HeaderComponent> headerComponentProvider,
                                  Provider<CategoryItemsComponent> cartItemPageProvider1,
                                  Provider<ItemDetailsPage> itemDetailsPageProvider,
-                                 Provider<ShoppingCartPage> shoppingCartPageProvider)
-    {
+                                 Provider<ShoppingCartPage> shoppingCartPageProvider, Provider<SearchPage> searchPageProvider) {
         this.welcomePageProvider = welcomePageProvider;
         this.headerComponentProvider = headerComponentProvider;
         this.cartItemPageProvider = cartItemPageProvider1;
         this.itemDetailsPageProvider = itemDetailsPageProvider;
         this.shoppingCartPageProvider = shoppingCartPageProvider;
+        this.searchPageProvider = searchPageProvider;
     }
 
     @And("user is logged in successfully")
@@ -55,6 +56,11 @@ public class GeneralStepDefinition {
 
     @And("user search item {string} with max price {double} and limit {int}")
     public void userSearchesItemWithMaxPriceAndLimitAndAddsItToCart(String itemName, double maxPrice, int limit) {
+        headerComponentProvider.get().fillSearchInput(itemName);
+        headerComponentProvider.get().clickOnSearchButton();
+        searchPageProvider.get().clickOnAdvanceSearchCheckBox();
+        searchPageProvider.get().enterPriceRangeTo(String.valueOf(maxPrice));
+        searchPageProvider.get().clickOnSearchButton();
         List<String> items = cartItemPageProvider.get().searchItemsByNameUnderPrice(itemName, maxPrice, limit);
 
     }
@@ -66,10 +72,20 @@ public class GeneralStepDefinition {
         SearchTestData scenario = testScenarios.get(index);
         Assert.assertNotNull(testScenarios, "Test scenarios should not be null");
 
+        String query = scenario.getQuery();
+        double maxPrice = scenario.getMaxPrice();
+        int limit = scenario.getLimit();
+
+        Assert.assertTrue(headerComponentProvider.get().fillSearchInput(query));
+        Assert.assertTrue(headerComponentProvider.get().clickOnSearchButton());
+        Assert.assertTrue(searchPageProvider.get().clickOnAdvanceSearchCheckBox());
+        Assert.assertTrue(searchPageProvider.get().enterPriceRangeTo(String.valueOf(maxPrice)));
+        Assert.assertTrue(searchPageProvider.get().clickOnSearchButton());
+
         List<String> links = cartItemPageProvider.get().searchItemsByNameUnderPrice(
-                scenario.getQuery(),
-                scenario.getMaxPrice(),
-                scenario.getLimit()
+                query,
+                maxPrice,
+                limit
         );
         Assert.assertNotNull(links, "The search result list is null");
         Assert.assertTrue(links.size() <= scenario.getLimit(),

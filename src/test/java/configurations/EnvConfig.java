@@ -1,6 +1,7 @@
 package configurations;
 
 import lombok.Data;
+
 import java.util.Map;
 
 @Data

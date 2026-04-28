@@ -43,5 +43,5 @@ public final class StateKeys {
     // =========================
     public static final String DB_USER_NAME = "dbUserName";
     public static final String DB_EMAIL = "dbEmail";
-    public static final String DB_PASSWORD="dbPassword";
+    public static final String DB_PASSWORD = "dbPassword";
 }

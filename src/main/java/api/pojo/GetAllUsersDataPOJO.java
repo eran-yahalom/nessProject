@@ -29,10 +29,6 @@ public class GetAllUsersDataPOJO {
     @JsonProperty("_meta")
     private Meta meta;
 
-    // =========================
-    // Nested Classes
-    // =========================
-
     @Data
     public static class UserData {
 

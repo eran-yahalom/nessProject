@@ -42,14 +42,6 @@ public class WelcomePage extends BasePage {
         super(driver);
     }
 
-    public boolean clickOnRegisterLink() {
-        return click(registerLink);
-    }
-
-    public boolean clickOnLoginLink() {
-        return click(loginLink);
-    }
-
     public boolean fillEmail(String email) {
         return fillText(emailInput, email);
     }
@@ -58,39 +50,11 @@ public class WelcomePage extends BasePage {
         return fillText(passwordInput, password);
     }
 
-    public boolean checkRememberMe() {
-        try {
-            if (!rememberMeCheckbox.isSelected()) {
-                return click(rememberMeCheckbox);
-            }
-        } catch (Exception e) {
-            return false;
-        }
-        return false;
-    }
-
     public boolean clickOnLoginButton() {
         return click(loginButton);
     }
 
     public String getInvalidLoginErrorMessage() {
         return getText(loginValidationErrorMessage);
-    }
-
-    public boolean isCorrectErrorMessageDisplayed(String expectedMessage) {
-        String actualMessage = getInvalidLoginErrorMessage();
-        return expectedMessage.equalsIgnoreCase(actualMessage);
-    }
-
-    public boolean isWelcomeMessageDisplayed() {
-        return isDisplayed(welcomeMessage);
-    }
-
-    public boolean isRegisterLinkDisplayed() {
-        return isDisplayed(registerLink);
-    }
-
-    public boolean isLoginLinkDisplayed() {
-        return isDisplayed(loginLink);
     }
 }

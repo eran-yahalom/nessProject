@@ -1,9 +1,9 @@
 package api.utils;
 
+import api.utils.GenericAPIRequestBuilder.RequestMethod;
 import io.restassured.RestAssured;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
-import api.utils.GenericAPIRequestBuilder.RequestMethod;
 
 import java.util.HashMap;
 import java.util.Map;

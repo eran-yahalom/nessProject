@@ -1,7 +1,7 @@
 [
   {
     "query": "computer",
-    "maxPrice": 100.0,
+    "maxPrice": 2000.0,
     "limit": 4
   },
   {

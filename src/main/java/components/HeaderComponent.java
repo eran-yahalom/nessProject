@@ -10,7 +10,7 @@ import org.openqa.selenium.support.PageFactory;
 @Log4j2
 public class HeaderComponent extends BaseComponent {
 
-    private WebDriver driver;
+  //  private WebDriver driver;
 
     @FindBy(css = ".ico-register")
     private WebElement registerLink;
@@ -48,54 +48,16 @@ public class HeaderComponent extends BaseComponent {
     @Inject
     public HeaderComponent(WebDriver driver) {
         super(driver);
-        this.driver = driver;
+     //   this.driver = driver;
         PageFactory.initElements(driver, this);
-    }
-
-    public boolean clickOnRegisterLink() {
-        return click(registerLink);
     }
 
     public boolean clickOnLoginLink() {
         return click(loginLink);
     }
 
-    public boolean clickOnWishlistLink() {
-        return click(wishlistLink);
-    }
-
-    public boolean clickOnHomeLogo() {
-        return click(homeLogo);
-    }
-
-    public boolean clickOnLogoutLink() {
-        return click(logoutLink);
-    }
-
     public boolean clickOnShoppingCartLink() {
         return click(shoppingCartLink);
-    }
-
-    public int getShoppingCartItemCount() {
-        try {
-            String itemCountText = getText(shoppingCartItemCount)
-                    .replaceAll("[()]", "")
-                    .trim();
-            return Integer.parseInt(itemCountText);
-        } catch (Exception e) {
-            log.info("Number of items in shopping cart: 0");
-            return 0;
-        }
-    }
-
-    public int getWishlistItemCount() {
-        try {
-            String itemCountText = getText(wishlistItemCount).trim();
-            return Integer.parseInt(itemCountText);
-        } catch (Exception e) {
-            log.info("Number of items in wishlist: 0");
-            return 0;
-        }
     }
 
     public boolean fillSearchInput(String searchTerm) {
@@ -104,17 +66,5 @@ public class HeaderComponent extends BaseComponent {
 
     public boolean clickOnSearchButton() {
         return click(searchButton);
-    }
-
-    public String getAlertPopUpText() {
-        return getAlertText();
-    }
-
-    public boolean closeAlertPopUp() {
-        return clickOnAlertOKButton();
-    }
-
-    public String getNoResultsTextMessage() {
-        return getText(noItemsInResultsMessage);
     }
 }

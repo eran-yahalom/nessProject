@@ -10,7 +10,6 @@ public class JsonDataLoaderUtils {
     public static List<SearchTestData> getSearchData(String fileName) {
         ObjectMapper mapper = new ObjectMapper();
         try {
-            // הנתיב לתיקייה שיצרת ב-Resources
             String filePath = "src/test/resources/data/" + fileName;
             return mapper.readValue(new File(filePath), new TypeReference<List<SearchTestData>>(){});
         } catch (IOException e) {

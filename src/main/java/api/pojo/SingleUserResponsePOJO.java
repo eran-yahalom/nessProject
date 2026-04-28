@@ -14,7 +14,6 @@ public class SingleUserResponsePOJO {
     @JsonProperty("_meta")
     private Meta meta;
 
-    // ===================== DATA =====================
     @Data
     @JsonIgnoreProperties(ignoreUnknown = true)
     public static class DataItem {
@@ -31,7 +30,6 @@ public class SingleUserResponsePOJO {
         private String avatar;
     }
 
-    // ===================== SUPPORT =====================
     @Data
     @JsonIgnoreProperties(ignoreUnknown = true)
     public static class Support {
@@ -40,7 +38,6 @@ public class SingleUserResponsePOJO {
         private String text;
     }
 
-    // ===================== META =====================
     @Data
     @JsonIgnoreProperties(ignoreUnknown = true)
     public static class Meta {
@@ -64,7 +61,6 @@ public class SingleUserResponsePOJO {
         private String context;
     }
 
-    // ===================== CTA =====================
     @Data
     @JsonIgnoreProperties(ignoreUnknown = true)
     public static class Cta {

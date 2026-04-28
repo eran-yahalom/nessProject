@@ -4,7 +4,9 @@ import lombok.extern.log4j.Log4j2;
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.*;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import utils.Utils;
 
 import java.time.Duration;
@@ -137,6 +139,7 @@ public abstract class BasePage {
 
         return false;
     }
+
     // ==============================
     // Wait helpers
     // ==============================
@@ -147,6 +150,7 @@ public abstract class BasePage {
     public void waitForElementToBeClickable(WebElement element) {
         wait.until(ExpectedConditions.elementToBeClickable(element));
     }
+
     // ==============================
     // Display check
     // ==============================
@@ -157,6 +161,7 @@ public abstract class BasePage {
             return false;
         }
     }
+
     // ==============================
     // Hover
     // ==============================
@@ -174,6 +179,7 @@ public abstract class BasePage {
 
         option.click();
     }
+
     // ==============================
     // Scroll
     // ==============================
@@ -183,6 +189,7 @@ public abstract class BasePage {
                 element
         );
     }
+
     // ==============================
     // Highlight
     // ==============================
@@ -207,6 +214,7 @@ public abstract class BasePage {
                 element, originalStyle
         );
     }
+
     // ==============================
     // Windows handling
     // ==============================
@@ -227,6 +235,7 @@ public abstract class BasePage {
         driver.close();
         driver.switchTo().window(mainWindow);
     }
+
     // ==============================
     // Dropdown
     // ==============================
@@ -265,6 +274,7 @@ public abstract class BasePage {
             return false;
         }
     }
+
     // ==============================
     // Popup handling
     // ==============================

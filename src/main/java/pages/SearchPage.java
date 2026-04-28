@@ -5,8 +5,6 @@ import components.CategoryItemsComponent;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import utils.Utils;
 
 public class SearchPage extends BasePage {
 
@@ -43,15 +41,6 @@ public class SearchPage extends BasePage {
         super(driver);
     }
 
-
-    public boolean doesAllSearchResultsContainSearchText(String textToSearch) {
-        return Utils.isSearchedItemInCategoryItems(driver, categoryItems.getListOfWebElementTitles(), textToSearch);
-    }
-
-    public int getNumberOfSearchResults() {
-        return categoryItems.getNumberOfProducts();
-    }
-
     public boolean clickOnAdvanceSearchCheckBox() {
         try {
             waitForElementToBeVisible(advanceSearchCheckBox);
@@ -74,31 +63,13 @@ public class SearchPage extends BasePage {
         }
     }
 
-    public void enterPriceRangeTo(String price) {
-        waitForElementToBeVisible(priceRangeToInput);
-        priceRangeToInput.clear();
-        priceRangeToInput.sendKeys(price);
-    }
-
-    public boolean fillSearchInputField(String searchText) {
+    public boolean enterPriceRangeTo(String price) {
         try {
-            waitForElementToBeVisible(searchInputField);
-            searchInputField.clear();
-            searchInputField.sendKeys(searchText);
-            click(searchStoreSearchButton);
+            waitForElementToBeVisible(priceRangeToInput);
+            priceRangeToInput.clear();
+            priceRangeToInput.sendKeys(price);
             return true;
         } catch (Exception e) {
-            System.err.println("Failed to fill search input field: " + e.getMessage());
-            return false;
-        }
-    }
-
-    public boolean isNoSearchResultsTextDisplayed() {
-        try {
-            waitForElementToBeVisible(noSearchResultsText);
-            return noSearchResultsText.isDisplayed();
-        } catch (Exception e) {
-            System.err.println("Failed to verify no search results text: " + e.getMessage());
             return false;
         }
     }

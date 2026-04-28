@@ -2,7 +2,6 @@ package pages;
 
 import com.google.inject.Inject;
 import components.HeaderComponent;
-import lombok.extern.log4j.Log4j;
 import lombok.extern.log4j.Log4j2;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -49,19 +48,6 @@ public class ShoppingCartPage extends BasePage {
         super(driver);
     }
 
-    public boolean isHeaderDisplayedCorrectly() {
-        return confirmPageHeader(header, "shoppingCartPageHeader");
-    }
-
-    public int countNumberOfItemsInCart() {
-        try {
-            return cartItemRow.size();
-        } catch (Exception e) {
-            log.info("Number of items in cart: 0");
-            return 0;
-        }
-    }
-
     public int getQuantityOfItemInCart() {
         int qty = 0;
         try {
@@ -84,39 +70,6 @@ public class ShoppingCartPage extends BasePage {
             if (!checkbox.isSelected()) {
                 click(checkbox);
             }
-        }
-        return click(updateCartButton);
-    }
-
-    public int sumPriceOfProductsInCart() {
-        int total = 0;
-        for (WebElement price : productTotalPrice) {
-            String priceText = getText(price).replace(".00", "").trim();
-            total += Integer.parseInt(priceText);
-        }
-        return total;
-    }
-
-    public int sumTaxesAndShippingCost() {
-        String shippingCostText = getText(shippingCost).replace(".00", "").trim();
-        String taxCostText = getText(taxCost).replace(".00", "").trim();
-        return Integer.parseInt(shippingCostText) + Integer.parseInt(taxCostText);
-    }
-
-    public boolean isTotalPriceCalculatedCorrectly() {
-        int expectedTotal = sumPriceOfProductsInCart() + sumTaxesAndShippingCost();
-        String totalPriceText = getText(totalPrice).replace(".00", "").trim();
-        int actualTotal = Integer.parseInt(totalPriceText);
-        return expectedTotal == actualTotal;
-    }
-
-    public boolean updateQuantityOfItemInCart(int newQuantity) {
-        if (cartItemRow == null || cartItemRow.isEmpty()) {
-            return false;
-        }
-        for (WebElement quantityInput : quantityInputFields) {
-            quantityInput.clear();
-            quantityInput.sendKeys(String.valueOf(newQuantity));
         }
         return click(updateCartButton);
     }

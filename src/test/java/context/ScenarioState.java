@@ -1,7 +1,5 @@
 package context;
 
-import io.cucumber.guice.ScenarioScoped;
-
 import java.util.HashMap;
 import java.util.Map;
 

@@ -16,7 +16,6 @@ public class ApiResponse<T> {
         this.responseTime = responseTime;
     }
 
-    // Getters
     public int getStatusCode() {
         return statusCode;
     }

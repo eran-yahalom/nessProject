@@ -17,8 +17,7 @@ public class RegisterStepDefinition {
     public RegisterStepDefinition(
 
             Provider<ShoppingCartPage> shoppingCartPageProvider,
-            Provider<HeaderComponent> headerComponentProvider)
-    {
+            Provider<HeaderComponent> headerComponentProvider) {
         this.shoppingCartPageProvider = shoppingCartPageProvider;
         this.headerComponentProvider = headerComponentProvider;
     }

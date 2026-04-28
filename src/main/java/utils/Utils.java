@@ -175,17 +175,13 @@ public class Utils {
     }
 
     public static void takeScreenshot(WebDriver driver, String screenshotName) {
-        // 1. המרת הדרייבר לאובייקט צילום מסך
         TakesScreenshot ts = (TakesScreenshot) driver;
 
-        // 2. יצירת קובץ זמני
         File source = ts.getScreenshotAs(OutputType.FILE);
 
-        // 3. הגדרת נתיב השמירה (למשל בתיקיית target/screenshots)
         String destinationPath = "target/screenshots/" + screenshotName + ".png";
 
         try {
-            // 4. העתקת הקובץ למיקום הסופי
             FileUtils.copyFile(source, new File(destinationPath));
             System.out.println("Screenshot saved to: " + destinationPath);
         } catch (IOException e) {

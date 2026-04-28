@@ -4,11 +4,10 @@ import lombok.extern.log4j.Log4j2;
 import net.datafaker.Faker;
 import net.datafaker.providers.base.Gender;
 
+import java.sql.Timestamp;
 import java.util.Collections;
 import java.util.List;
 import java.util.UUID;
-
-import java.sql.Timestamp;
 
 @Log4j2
 public class GeneratorUtils {
