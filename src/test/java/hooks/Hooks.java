@@ -46,7 +46,6 @@ public class Hooks {
     @After
     public void tearDown(Scenario scenario) {
         try {
-            // 1. קודם כל מטפלים בתיעוד הכישלון (Screenshot) כל עוד הדרייבר חי
             if (scenario.isFailed() && driver != null) {
                 try {
                     AllureUtils.attachScreenshot(driver, "Failure Screenshot - " + scenario.getName());
@@ -58,17 +57,14 @@ public class Hooks {
                 }
             }
         } finally {
-            // 2. ניקוי נתונים - תמיד יתבצע גם אם הצילום נכשל
             ScenarioContext.clear();
 
-            // 3. סגירת ה-DB בנפרד (כדי שלא יפיל את ה-Driver Quit)
             try {
                 DBSetupService.close();
             } catch (Exception e) {
                 System.err.println("DB connection close failed: " + e.getMessage());
             }
 
-            // 4. שחרור הדרייבר
             if (driver != null) {
                 driver.quit();
             }
